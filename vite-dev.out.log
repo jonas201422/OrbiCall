@@ -1,0 +1,10 @@
+
+> orbicall-landingpage@1.0.0 dev
+> vite --host 0.0.0.0 --port 5173
+
+
+  [32m[1mVITE[22m v7.3.2[39m  [2mready in [0m[1m653[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.178.101:[1m5173[22m/[39m
+[2m03:09:56[22m [36m[1m[vite][22m[39m changed tsconfig file detected: C:/Users/Nutzer 1/Documents/New project/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
