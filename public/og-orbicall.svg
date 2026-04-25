@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#050816"/>
+  <path d="M0 477C151 419 274 454 407 417C533 382 613 268 741 284C884 303 959 449 1200 373V630H0V477Z" fill="url(#wave)" opacity=".95"/>
+  <path d="M138 252C128 191 174 132 247 124C277 121 305 127 328 141" stroke="#16D6FF" stroke-width="14" stroke-linecap="round"/>
+  <path d="M364 217C378 284 329 349 253 354C222 356 194 347 172 331" stroke="#7A3CFF" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="356" cy="163" r="14" fill="#16D6FF"/>
+  <circle cx="153" cy="327" r="14" fill="#2E8BFF"/>
+  <rect x="205" y="219" width="16" height="78" rx="8" fill="#16D6FF"/>
+  <rect x="240" y="191" width="16" height="134" rx="8" fill="#4B6BFF"/>
+  <rect x="275" y="219" width="16" height="78" rx="8" fill="#C44BFF"/>
+  <text x="430" y="236" fill="white" font-family="Arial, sans-serif" font-size="86" font-weight="800">Orbi</text>
+  <text x="630" y="236" fill="url(#text)" font-family="Arial, sans-serif" font-size="86" font-weight="800">call</text>
+  <text x="138" y="438" fill="white" font-family="Arial, sans-serif" font-size="58" font-weight="800">AI Call Agents für Unternehmen</text>
+  <text x="142" y="500" fill="#DDE3F0" font-family="Arial, sans-serif" font-size="30">Where comfort meets the future</text>
+  <defs>
+    <linearGradient id="text" x1="630" y1="160" x2="785" y2="245" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2E8BFF"/>
+      <stop offset=".55" stop-color="#7A3CFF"/>
+      <stop offset="1" stop-color="#C44BFF"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="420" x2="1200" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16D6FF" stop-opacity=".08"/>
+      <stop offset=".48" stop-color="#2E8BFF" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#C44BFF" stop-opacity=".26"/>
+    </linearGradient>
+  </defs>
+</svg>
