@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CalendlyBadge } from "./components/CalendlyBadge";
 import { CookieConsent } from "./components/CookieConsent";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -45,6 +46,7 @@ export function App() {
       <Header />
       <CurrentPage pathname={pathname} />
       <Footer />
+      <CalendlyBadge />
       <CookieConsent />
     </>
   );

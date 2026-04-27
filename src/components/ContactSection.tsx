@@ -89,11 +89,11 @@ export function ContactSection() {
                 <small>Kostenlose Demo in einem passenden Slot anfragen</small>
               </span>
             </a>
-            <div className="contact-option" aria-label="Keine Tracking-Skripte">
+            <div className="contact-option" aria-label="Calendly Demo-Buchung">
               <Icon name="shield" />
               <span>
-                <strong>Ohne Tracking-Embed</strong>
-                <small>Calendly wird als Link geöffnet, nicht als externes Script geladen</small>
+                <strong>Schnelle Demo-Buchung</strong>
+                <small>Der Demo-Termin läuft über Calendly und öffnet den Buchungsflow direkt</small>
               </span>
             </div>
           </div>

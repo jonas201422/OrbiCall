@@ -63,8 +63,9 @@ export function DatenschutzPage() {
 
       <h2>6. Drittanbieter</h2>
       <p>
-        Calendly wird auf dieser Website als externer Link angeboten. Es wird kein Calendly-Embed-Script auf der
-        Seite geladen. Beim Öffnen des Links gelten die Datenschutzinformationen des jeweiligen Drittanbieters.
+        Für die Buchung einer Demo kann Calendly eingebunden oder verlinkt werden. Dabei werden Inhalte und
+        Skripte von Calendly geladen, um den Buchungsbutton beziehungsweise den Buchungsflow bereitzustellen.
+        Beim Öffnen oder Nutzen der Buchung gelten zusätzlich die Datenschutzinformationen von Calendly.
       </p>
       <p className="placeholder">Weitere Drittanbieter: {site.thirdPartyPlaceholder}</p>
 

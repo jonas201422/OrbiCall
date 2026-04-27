@@ -4,7 +4,7 @@ export const site = {
   slogan: "Where comfort meets the future",
   founders: "Jonas Abdulla und Armin Kero",
   country: "Österreich",
-  calendlyUrl: "https://calendly.com/orbicall/demo",
+  calendlyUrl: "https://calendly.com/jonasabdulla6",
   contactEmail: "",
   legalEmailPlaceholder: "[E-Mail ergänzen]",
   legalPhonePlaceholder: "[Telefonnummer ergänzen]",
