@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { site } from "../data/site";
+import { DemoButton } from "./DemoButton";
 import { Icon } from "./Icon";
 
 type FormState = {
@@ -38,12 +39,12 @@ export function ContactSection() {
   const validate = () => {
     const nextErrors: FormErrors = {};
 
-    if (!form.name.trim()) nextErrors.name = "Bitte gib deinen Namen ein.";
-    if (!form.company.trim()) nextErrors.company = "Bitte gib dein Unternehmen ein.";
-    if (!emailPattern.test(form.email.trim())) nextErrors.email = "Bitte gib eine gültige E-Mail-Adresse ein.";
-    if (!form.phone.trim()) nextErrors.phone = "Bitte gib eine Telefonnummer ein.";
-    if (!form.message.trim()) nextErrors.message = "Bitte beschreibe kurz dein Anliegen.";
-    if (!form.privacy) nextErrors.privacy = "Bitte bestätige die Datenschutzhinweise.";
+    if (!form.name.trim()) nextErrors.name = "Bitte geben Sie Ihren Namen ein.";
+    if (!form.company.trim()) nextErrors.company = "Bitte geben Sie Ihr Unternehmen ein.";
+    if (!emailPattern.test(form.email.trim())) nextErrors.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
+    if (!form.phone.trim()) nextErrors.phone = "Bitte geben Sie eine Telefonnummer ein.";
+    if (!form.message.trim()) nextErrors.message = "Bitte beschreiben Sie kurz Ihr Anliegen.";
+    if (!form.privacy) nextErrors.privacy = "Bitte bestätigen Sie die Datenschutzhinweise.";
 
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
@@ -53,22 +54,15 @@ export function ContactSection() {
     event.preventDefault();
 
     if (!validate()) {
-      setStatus("Bitte prüfe die markierten Felder.");
+      setStatus("Bitte prüfen Sie die markierten Felder.");
       return;
     }
 
-    if (site.contactEmail) {
-      const subject = encodeURIComponent(`Demo-Anfrage von ${form.company}`);
-      const body = encodeURIComponent(
-        `Name: ${form.name}\nUnternehmen: ${form.company}\nE-Mail: ${form.email}\nTelefon: ${form.phone}\n\nNachricht:\n${form.message}`,
-      );
-      window.location.href = `mailto:${site.contactEmail}?subject=${subject}&body=${body}`;
-      return;
-    }
-
-    setStatus(
-      "Formularversand ist noch nicht mit einem Backend verbunden. Bitte nutze den Demo-Button oder ergänze eine Kontakt-E-Mail im Projekt.",
+    const subject = encodeURIComponent(`OrbiCall Demo-Anfrage von ${form.company}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nUnternehmen: ${form.company}\nE-Mail: ${form.email}\nTelefon: ${form.phone}\n\nNachricht:\n${form.message}`,
     );
+    window.location.href = `mailto:${site.contactEmails.join(",")}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -76,26 +70,38 @@ export function ContactSection() {
       <div className="container contact-grid">
         <div className="contact-copy" data-reveal>
           <p className="section-kicker">Kontakt</p>
-          <h2 id="contact-title">Lass uns deinen AI Call Agent planen.</h2>
+          <h2 id="contact-title">Demo buchen oder direkt Kontakt aufnehmen.</h2>
           <p className="section-lead">
-            Sag uns kurz, wie dein Unternehmen erreichbar sein soll. Wir melden uns mit einer passenden Demo
-            und den nächsten Schritten.
+            Erzählen Sie kurz, wie Ihr Unternehmen erreichbar sein soll. OrbiCall meldet sich mit einer passenden
+            Demo und den nächsten Schritten für Ihren KI Telefonassistenten.
           </p>
           <div className="contact-options">
-            <a className="contact-option" href={site.calendlyUrl} target="_blank" rel="noreferrer">
+            <a className="contact-option" href={site.demoUrl} target="_blank" rel="noopener noreferrer">
               <Icon name="calendar" />
               <span>
-                <strong>Termin per Calendly buchen</strong>
-                <small>Kostenlose Demo in einem passenden Slot anfragen</small>
+                <strong>Demo buchen</strong>
+                <small>Zeigt Gesprächsführung, Terminlogik, Weiterleitung und Zusammenfassungen</small>
               </span>
             </a>
-            <div className="contact-option" aria-label="Keine Tracking-Skripte">
-              <Icon name="shield" />
+            {site.contactPeople.map((person) => (
+              <a className="contact-option" href={person.phoneHref} key={person.email}>
+                <Icon name="phone" />
+                <span>
+                  <strong>{person.name}, {person.role}</strong>
+                  <small>{person.phone} · {person.email}</small>
+                </span>
+              </a>
+            ))}
+            <a className="contact-option" href={`mailto:${site.contactEmails.join(",")}`}>
+              <Icon name="mail" />
               <span>
-                <strong>Ohne Tracking-Embed</strong>
-                <small>Calendly wird als Link geöffnet, nicht als externes Script geladen</small>
+                <strong>E-Mail an OrbiCall</strong>
+                <small>{site.contactEmails.join(" · ")}</small>
               </span>
-            </div>
+            </a>
+          </div>
+          <div className="contact-demo-cta">
+            <DemoButton />
           </div>
         </div>
 
@@ -169,6 +175,7 @@ export function ContactSection() {
               onChange={(event) => updateField("message", event.target.value)}
               aria-invalid={Boolean(errors.message)}
               aria-describedby={errors.message ? "message-error" : undefined}
+              placeholder="z. B. Branche, Anzahl der Standorte, typische Anrufe und gewünschte Demo-Zeit"
             />
             {errors.message && <small id="message-error">{errors.message}</small>}
           </div>
@@ -191,12 +198,12 @@ export function ContactSection() {
           {errors.privacy && <small id="privacy-error" className="field-error">{errors.privacy}</small>}
 
           <button className="btn btn-primary form-button" type="submit">
-            Anfrage prüfen
+            Kontakt aufnehmen
             <Icon name="arrow" />
           </button>
 
           <p className="form-status" role="status" aria-live="polite">
-            {status}
+            {status || "Das Formular öffnet eine vorbereitete E-Mail an OrbiCall. Es speichert keine Daten im Browser."}
           </p>
         </form>
       </div>

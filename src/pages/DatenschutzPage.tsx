@@ -1,96 +1,133 @@
+import { JsonLd } from "../components/JsonLd";
 import { LegalLayout } from "../components/LegalLayout";
+import { breadcrumbSchema } from "../data/schemas";
 import { site } from "../data/site";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export function DatenschutzPage() {
   usePageMeta({
-    title: "Datenschutzerklärung - Orbicall",
-    description: "Einfache Datenschutzerklärung für Orbicall mit Hinweisen zu Kontaktaufnahme, Logfiles und Cookies.",
+    title: "Datenschutz | OrbiCall DSGVO",
+    description:
+      "Datenschutzhinweise von OrbiCall mit DSGVO-Fokus, Kontaktaufnahme, Server-Logfiles, Cookies und Demo-Anfragen.",
+    path: "/datenschutz",
   });
 
   return (
     <LegalLayout eyebrow="Datenschutz" title="Datenschutzerklärung">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Startseite", path: "/" },
+          { name: "Datenschutz", path: "/datenschutz" },
+        ])}
+      />
+      <div className="operator-note">
+        TODO: Diese Datenschutzerklärung muss vor Veröffentlichung mit den tatsächlich eingesetzten Hosting-,
+        Telefonie-, KI-, Formular-, Kalender- und Analyse-Anbietern abgeglichen und rechtlich geprüft werden.
+      </div>
+
       <p>
-        Diese Datenschutzerklärung beschreibt in einfacher Form, welche Daten beim Besuch dieser Website und
-        bei einer Kontaktaufnahme verarbeitet werden können. Bitte vor Veröffentlichung mit konkreten technischen
-        Dienstleistern, echten Kontaktdaten und rechtlicher Prüfung ergänzen.
+        Diese Datenschutzerklärung beschreibt, welche personenbezogenen Daten beim Besuch der Website und bei einer
+        Kontaktaufnahme mit OrbiCall verarbeitet werden können. OrbiCall richtet sich an Unternehmen in Österreich und
+        achtet auf eine DSGVO-orientierte, transparente und zweckgebundene Verarbeitung.
       </p>
 
       <h2>1. Verantwortliche</h2>
       <p>
-        Verantwortlich für diese Website ist {site.brand}, betrieben von {site.founders}, {site.country}.
+        Verantwortlich für diese Website ist {site.brand}, betrieben von {site.founderLabel}, {site.country}.
       </p>
       <p className="placeholder">
         Adresse: {site.legalAddressPlaceholder}
         <br />
-        E-Mail: {site.legalEmailPlaceholder}
-        <br />
-        Telefon: {site.legalPhonePlaceholder}
-      </p>
-
-      <h2>2. Kontaktaufnahme per Formular oder E-Mail</h2>
-      <p>
-        Wenn du uns über das Kontaktformular oder per E-Mail kontaktierst, verarbeiten wir die von dir
-        angegebenen Daten, um deine Anfrage zu beantworten und eine Demo oder Rückmeldung vorzubereiten.
-        Dazu können Name, Unternehmen, E-Mail-Adresse, Telefonnummer und Nachricht gehören.
+        Rechtsform: {site.legalFormPlaceholder}
       </p>
       <p>
-        Das Formular speichert keine Daten lokal. Ohne angebundenes Backend wird aktuell nur ein Hinweis angezeigt
-        oder eine spätere E-Mail-Weiterleitung vorbereitet, sobald eine Kontaktadresse ergänzt wurde.
+        Datenschutzanfragen können an folgende E-Mail-Adressen gerichtet werden:{" "}
+        {site.contactEmails.map((email, index) => (
+          <span key={email}>
+            {index > 0 ? ", " : ""}
+            <a href={`mailto:${email}`}>{email}</a>
+          </span>
+        ))}
+        .
       </p>
 
-      <h2>3. Server-Logfiles</h2>
+      <h2>2. Kontaktaufnahme per Formular, E-Mail oder Telefon</h2>
       <p>
-        Beim Aufruf der Website können technisch notwendige Zugriffsdaten durch den Hosting-Anbieter verarbeitet
-        werden, zum Beispiel IP-Adresse, Zeitpunkt des Aufrufs, angefragte Datei, Browserinformationen und
-        Statuscodes. Diese Daten dienen der Bereitstellung, Sicherheit und Fehleranalyse der Website.
+        Wenn Sie OrbiCall kontaktieren, werden die von Ihnen angegebenen Daten verarbeitet, um Ihre Anfrage zu
+        beantworten, eine Demo vorzubereiten oder ein Angebot zu erstellen. Dazu können Name, Unternehmen,
+        E-Mail-Adresse, Telefonnummer, Nachricht, Branche und gewünschte Telefonprozesse gehören.
       </p>
-      <p className="placeholder">Hosting-Anbieter: {site.hostingPlaceholder}</p>
-
-      <h2>4. Cookies und lokale Speicherung</h2>
       <p>
-        Die Website nutzt aktuell keine Analyse- oder Marketingcookies. Für den Cookie-Hinweis kann lokal im
-        Browser gespeichert werden, welche Auswahl du getroffen hast. Diese Speicherung dient nur der UI-Funktion
-        und verhindert, dass der Hinweis bei jedem Besuch erneut erscheint.
+        Das Kontaktformular auf dieser Website öffnet aktuell eine vorbereitete E-Mail. Es speichert keine Anfrage in
+        einem eigenen Backend und übermittelt keine Daten an ein Formularsystem.
       </p>
 
-      <h2>5. Keine Analyse- oder Marketingcookies ohne Einwilligung</h2>
+      <h2>3. Demo-Buchung und Kalenderlinks</h2>
       <p>
-        Statistik- und Marketingkategorien sind in der Oberfläche vorbereitet, standardmäßig aber deaktiviert.
-        Es werden keine nicht notwendigen Cookies oder Tracking-Skripte gesetzt, bevor eine passende Einwilligung
-        und technische Umsetzung vorhanden ist.
+        Für Demo-Termine kann OrbiCall auf externe Kalender- oder Buchungsdienste verlinken. Beim Öffnen eines externen
+        Buchungslinks gelten zusätzlich die Datenschutzinformationen des jeweiligen Anbieters.
       </p>
+      <p className="placeholder">{site.thirdPartyPlaceholder}</p>
 
-      <h2>6. Drittanbieter</h2>
+      <h2>4. Server-Logfiles und Hosting</h2>
       <p>
-        Calendly wird auf dieser Website als externer Link angeboten. Es wird kein Calendly-Embed-Script auf der
-        Seite geladen. Beim Öffnen des Links gelten die Datenschutzinformationen des jeweiligen Drittanbieters.
+        Beim Aufruf der Website können technisch notwendige Zugriffsdaten durch den Hosting-Anbieter verarbeitet werden,
+        etwa IP-Adresse, Zeitpunkt des Aufrufs, angefragte Datei, Browserinformationen, Referrer und Statuscodes. Diese
+        Daten dienen der Bereitstellung, Sicherheit und Fehleranalyse.
       </p>
-      <p className="placeholder">Weitere Drittanbieter: {site.thirdPartyPlaceholder}</p>
+      <p className="placeholder">{site.hostingPlaceholder}</p>
 
-      <h2>7. Rechte der betroffenen Personen</h2>
+      <h2>5. Cookies und lokale Speicherung</h2>
       <p>
-        Betroffene Personen können, abhängig von den gesetzlichen Voraussetzungen, Auskunft, Berichtigung,
-        Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch gegen bestimmte
-        Verarbeitungen verlangen.
+        Die Website nutzt aktuell eine lokale Speicherung für die Cookie-Auswahl. Diese Speicherung ist technisch
+        notwendig, damit der Hinweis nicht bei jedem Besuch erneut erscheint. Analyse- und Marketingdienste werden auf
+        dieser Website nicht aktiv eingebunden, solange keine entsprechende Einwilligung und technische Dokumentation
+        vorhanden sind.
       </p>
 
-      <h2>8. Kontakt für Datenschutzanfragen</h2>
+      <h2>6. KI Telefonassistent und Telefoniedaten</h2>
+      <p>
+        Beim Einsatz eines KI Telefonassistenten können je nach Setup Gesprächsdaten, Kontaktdaten, Anliegen,
+        Terminwünsche und Gesprächszusammenfassungen verarbeitet werden. Welche Daten konkret verarbeitet werden, hängt
+        vom jeweiligen Kundenprojekt, der Telefonie-Integration und den vereinbarten Prozessen ab.
+      </p>
       <p className="placeholder">
-        Datenschutzkontakt: {site.legalEmailPlaceholder}
+        TODO: Konkrete KI-, Telefonie-, Speicher-, Transkriptions- und Integrationsanbieter samt Rechtsgrundlage,
+        Auftragsverarbeitung, Speicherfristen und Datenstandorten ergänzen.
       </p>
 
-      <h2>9. Beschwerderecht</h2>
+      <h2>7. Rechtsgrundlagen</h2>
       <p>
-        Wenn du der Ansicht bist, dass die Verarbeitung deiner personenbezogenen Daten gegen Datenschutzrecht
-        verstößt, kannst du dich bei der zuständigen Datenschutzbehörde beschweren. In Österreich ist dies
-        die Österreichische Datenschutzbehörde.
+        Die Verarbeitung kann je nach Kontext auf vorvertraglichen Maßnahmen, Vertragserfüllung, berechtigten
+        Interessen, gesetzlichen Pflichten oder Einwilligung beruhen. Die konkrete Rechtsgrundlage muss für produktive
+        Kundenprojekte anhand der finalen technischen Umsetzung geprüft und dokumentiert werden.
       </p>
 
-      <h2>10. Änderungen</h2>
+      <h2>8. Speicherdauer</h2>
       <p>
-        Diese Datenschutzerklärung sollte angepasst werden, sobald Hosting, Kontaktwege, Integrationen oder
-        weitere Dienste final feststehen.
+        Personenbezogene Daten werden nur so lange verarbeitet, wie dies für den jeweiligen Zweck erforderlich ist oder
+        gesetzliche Aufbewahrungspflichten bestehen. Für Demo-Anfragen und Telefonieprojekte sind konkrete
+        Speicherfristen zu definieren.
+      </p>
+      <p className="placeholder">TODO: Konkrete Speicherfristen je Datenkategorie ergänzen.</p>
+
+      <h2>9. Rechte betroffener Personen</h2>
+      <p>
+        Betroffene Personen können, abhängig von den gesetzlichen Voraussetzungen, Auskunft, Berichtigung, Löschung,
+        Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch verlangen. Soweit eine Verarbeitung auf
+        Einwilligung beruht, kann diese Einwilligung mit Wirkung für die Zukunft widerrufen werden.
+      </p>
+
+      <h2>10. Beschwerderecht</h2>
+      <p>
+        Wenn Sie der Ansicht sind, dass die Verarbeitung personenbezogener Daten gegen Datenschutzrecht verstößt,
+        können Sie sich bei der Österreichischen Datenschutzbehörde beschweren.
+      </p>
+
+      <h2>11. Änderungen</h2>
+      <p>
+        Diese Datenschutzerklärung wird angepasst, sobald Hosting, Integrationen, Telefonieanbieter, KI-Dienste,
+        Analyse-Tools oder weitere Verarbeitungen final feststehen.
       </p>
     </LegalLayout>
   );
