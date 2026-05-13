@@ -11,6 +11,13 @@ export const site = {
   region: "Oberösterreich",
   city: "Linz",
   demoUrl: "https://calendar.app.google/57VUsdfJNUMhKZYu6",
+  socialLinks: [
+    {
+      label: "Instagram",
+      handle: "@orbicall.at",
+      href: "https://www.instagram.com/orbicall.at/",
+    },
+  ],
   contactEmail: "jonasabdulla@orbicall.at",
   contactEmails: ["jonasabdulla@orbicall.at", "arminkero@orbicall.at"],
   contactPeople: [

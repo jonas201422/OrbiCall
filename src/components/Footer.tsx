@@ -20,6 +20,16 @@ const legalLinks = [
   { label: "Datenschutz", href: "/datenschutz" },
 ];
 
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1.2" />
+    </svg>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="site-footer">
@@ -73,6 +83,23 @@ export function Footer() {
               {link.label}
             </a>
           ))}
+          <div className="footer-socials">
+            <h2>Socials</h2>
+            <div className="social-links">
+              {site.socialLinks.map((social) => (
+                <a
+                  aria-label={`${social.label} ${social.handle}`}
+                  href={social.href}
+                  key={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`${social.label} ${social.handle}`}
+                >
+                  <InstagramIcon />
+                </a>
+              ))}
+            </div>
+          </div>
         </nav>
 
         <p className="copyright">© 2026 OrbiCall. Alle Rechte vorbehalten.</p>
