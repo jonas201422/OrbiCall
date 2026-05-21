@@ -5,6 +5,7 @@ import { FAQBlock } from "../components/FAQBlock";
 import { Hero } from "../components/Hero";
 import { IndustrySection } from "../components/IndustrySection";
 import { JsonLd } from "../components/JsonLd";
+import { LossCalculator } from "../components/LossCalculator";
 import { ProblemSection } from "../components/ProblemSection";
 import { ProcessSteps } from "../components/ProcessSteps";
 import { SecuritySection } from "../components/SecuritySection";
@@ -21,6 +22,7 @@ export function HomePage() {
     <main id="main">
       <JsonLd data={[serviceSchema("KI Telefonassistent für Unternehmen in Österreich", "/"), faqSchema(homeFaq, "/")]} />
       <Hero />
+      <LossCalculator />
       <ProblemSection />
       <StatsSection />
       <SolutionSection />
