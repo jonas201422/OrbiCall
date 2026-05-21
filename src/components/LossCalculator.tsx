@@ -219,9 +219,6 @@ export function LossCalculator() {
   const lossPerYear = lossPerMonth * 12;
   const lostCustomersPerMonth = lostCustomersPerDay * values.openDays;
   const customerValuePresets = branches[branch].customerValues;
-  const barValues = [lossPerDay, lossPerMonth / 8, lossPerYear / 80];
-  const maxBarValue = Math.max(...barValues, 1);
-
   return (
     <section className="section loss-calculator-section" id="verlustrechner" aria-labelledby="loss-calculator-title">
       <div className="container">
@@ -302,15 +299,6 @@ export function LossCalculator() {
                   <span>Geschätzter Umsatzverlust pro Jahr</span>
                   <strong>{currencyFormatter.format(lossPerYear)}</strong>
                 </article>
-              </div>
-
-              <div className="loss-visual" aria-hidden="true">
-                <div>
-                  <span style={{ height: `${Math.max(10, (barValues[0] / maxBarValue) * 100)}%` }} />
-                  <span style={{ height: `${Math.max(18, (barValues[1] / maxBarValue) * 100)}%` }} />
-                  <span style={{ height: `${Math.max(28, (barValues[2] / maxBarValue) * 100)}%` }} />
-                </div>
-                <p>{currencyFormatter.format(lossPerMonth)}</p>
               </div>
 
               <p className="loss-disclaimer">
