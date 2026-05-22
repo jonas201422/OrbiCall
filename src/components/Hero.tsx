@@ -10,14 +10,13 @@ export function Hero() {
         <div className="hero-copy" data-reveal>
           <p className="eyebrow">KI Telefonservice aus Österreich</p>
           <h1 id="hero-title">
-            <span>KI</span>
-            <span>Telefonassistent</span>
-            <span>für Unternehmen</span>
-            <span className="hero-title-gradient">in Österreich</span>
+            <span>Verpasste Anrufe.</span>
+            {" "}
+            <span className="hero-title-gradient">Echter Verlust.</span>
           </h1>
           <p className="hero-subtitle">
-            OrbiCall nimmt Anrufe entgegen, beantwortet Kundenfragen, unterstützt bei Terminbuchungen
-            und entlastet Teams in österreichischen Unternehmen.
+            OrbiCall ist der KI Telefonassistent für Unternehmen in Österreich: Er nimmt Anrufe entgegen,
+            beantwortet Kundenfragen, unterstützt bei Terminbuchungen und entlastet Teams spürbar.
           </p>
           <div className="hero-actions">
             <DemoButton />
